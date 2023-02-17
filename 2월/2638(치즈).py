@@ -23,7 +23,6 @@ while melted:
     while melted:
         popped=melted.pop()
         lst[popped[0]][popped[1]]=0
-
     ans += 1
 
     for i in range(N):
