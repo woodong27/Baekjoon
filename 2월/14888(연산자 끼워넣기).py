@@ -24,25 +24,25 @@ for i in range(len(op_sets)):
         if case:
             tlst.append(case.pop())
 
-    temprlt=[]
+    temp2=[]
     while tlst:
         if tlst[0].isdigit():
-            temprlt.append(int(tlst.popleft()))
+            temp2.append(int(tlst.popleft()))
         else:
             oper=tlst.popleft()
             if oper=='+':
-                temprlt.append(temprlt.pop()+int(tlst.popleft()))
+                temp2.append(temp2.pop()+int(tlst.popleft()))
             elif oper=='*':
-                temprlt.append(temprlt.pop()*int(tlst.popleft()))
+                temp2.append(temp2.pop()*int(tlst.popleft()))
             elif oper=='-':
-                temprlt.append(temprlt.pop()-int(tlst.popleft()))
+                temp2.append(temp2.pop()-int(tlst.popleft()))
             elif oper=='/':
-                if temprlt[-1]<0:
-                    temprlt.append(-((-temprlt.pop())//int(tlst.popleft())))
+                if temp2[-1]<0:
+                    temp2.append(-((-temp2.pop())//int(tlst.popleft())))
                 else:
-                    temprlt.append(temprlt.pop()//int(tlst.popleft()))
+                    temp2.append(temp2.pop()//int(tlst.popleft()))
 
-    result.append(*temprlt)
+    result.append(*temp2)
 
 print(max(result))
 print(min(result))
