@@ -13,7 +13,6 @@ def bfs(point):
     global cnt
     while que:
         ci,cj,cnt=que.popleft()
-        visited[ci][cj]=1
         for k in range(4):
             if 0<=ci+di[k]<n and 0<=cj+dj[k]<m:
                 ni,nj=ci+di[k],cj+dj[k]
@@ -27,6 +26,7 @@ for i in range(n):
     for j in range(m):
         if box[i][j]==1:
             bfspoint.append((i,j,0))
+            visited[i][j]=1
 
 cnt=0
 bfs(bfspoint)
