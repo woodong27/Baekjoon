@@ -22,9 +22,9 @@ for _ in range(K):
             else:
                 gear[num+1].insert(0,gear[num+1].pop())
 
-        if num-1>0 and gear[num][6]!=gear[num-1][2]:
-            if num-2>0 and gear[num-1][6]!=gear[num-2][2]:
-                if num-3>0 and gear[num-2][6]!=gear[num-3][2]:
+        if num-1>=0 and gear[num][6]!=gear[num-1][2]:
+            if num-2>=0 and gear[num-1][6]!=gear[num-2][2]:
+                if num-3>=0 and gear[num-2][6]!=gear[num-3][2]:
                     gear[num-1].insert(0,gear[num-1].pop())
                     gear[num-2].append(gear[num-2].pop(0))
                     gear[num-3].insert(0,gear[num-3].pop())
@@ -49,9 +49,9 @@ for _ in range(K):
             else:
                 gear[num+1].append(gear[num+1].pop(0))
 
-        if num-1>0 and gear[num][6]!=gear[num-1][2]:
-            if num-2>0 and gear[num-1][6]!=gear[num-2][2]:
-                if num-3>0 and gear[num-2][6]!=gear[num-3][2]:
+        if num-1>=0 and gear[num][6]!=gear[num-1][2]:
+            if num-2>=0 and gear[num-1][6]!=gear[num-2][2]:
+                if num-3>=0 and gear[num-2][6]!=gear[num-3][2]:
                     gear[num-1].append(gear[num-1].pop(0))
                     gear[num-2].insert(0,gear[num-2].pop())
                     gear[num-3].append(gear[num-3].pop(0))
