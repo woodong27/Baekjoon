@@ -53,11 +53,10 @@ while eatable:
             eatable = findeatable(si, sj)
             break
 
-        else:
-            for k in range(4):
-                ni,nj=ci+di[k],cj+dj[k]
-                if 0<=ni<N and 0<=nj<N and not visit[ni][nj] and sea[ni][nj]<=size:
-                    q.append((ni,nj,cnt+1))
-                    visit[ni][nj]=1
+        for k in range(4):
+            ni,nj=ci+di[k],cj+dj[k]
+            if 0<=ni<N and 0<=nj<N and not visit[ni][nj] and sea[ni][nj]<=size:
+                q.append((ni,nj,cnt+1))
+                visit[ni][nj]=1
 
 print(ans)
