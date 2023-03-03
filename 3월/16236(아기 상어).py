@@ -31,7 +31,6 @@ def findeatable(i,j):
     lst.sort(key=lambda x:(-x[2],-x[0],-x[1]))
     return lst
 
-from pprint import pprint
 ans=0
 size=2
 growcnt=0
@@ -39,22 +38,21 @@ eatable=findeatable(si,sj)
 while eatable:
     visit=[[0]*N for _ in range(N)]
     gi,gj,distance=eatable.pop()
+    sea[gi][gj]=0
     q=deque([(si,sj,0)])
     visit[si][sj]=1
     while q:
         ci,cj,cnt=q.popleft()
         if ci==gi and cj==gj:
-            print(ci,cj)
             ans+=cnt
-            sea[ci][cj]=0
-            pprint(sea)
             si,sj=ci,cj
             growcnt+=1
             if growcnt==size:
                 size+=1
                 growcnt=0
-                eatable=findeatable(si,sj)
+            eatable = findeatable(si, sj)
             break
+
         else:
             for k in range(4):
                 ni,nj=ci+di[k],cj+dj[k]
