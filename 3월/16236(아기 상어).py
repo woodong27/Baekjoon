@@ -30,8 +30,8 @@ eatable=0
 for i in range(N):
     for j in range(N):
         if sea[i][j]==9:
-            eatable=findeatable(i,j)
             sea[i][j]=0
+            eatable=findeatable(i,j)
 
 ans=0
 while eatable:
