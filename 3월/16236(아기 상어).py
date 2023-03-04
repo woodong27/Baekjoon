@@ -6,18 +6,13 @@ sea=[list(map(int,input().split()))for _ in range(N)]
 di=[-1,1,0,0]
 dj=[0,0,-1,1]
 
-si=sj=0
-for i in range(N):
-    for j in range(N):
-        if sea[i][j]==9:
-            si,sj=i,j
-            sea[i][j]=0
-
-def findeatable(i,j):
+size=2
+growcnt=0
+def findeatable(si,sj):
     visited=[[0]*N for _ in range(N)]
     lst=[]
-    q=deque([(i,j,0)])
-    visited[i][j]=1
+    q=deque([(si,sj,0)])
+    visited[si][sj]=1
     while q:
         ci,cj,cnt=q.popleft()
         for k in range(4):
@@ -31,32 +26,22 @@ def findeatable(i,j):
     lst.sort(key=lambda x:(-x[2],-x[0],-x[1]))
     return lst
 
+eatable=0
+for i in range(N):
+    for j in range(N):
+        if sea[i][j]==9:
+            eatable=findeatable(i,j)
+            sea[i][j]=0
+
 ans=0
-size=2
-growcnt=0
-eatable=findeatable(si,sj)
 while eatable:
-    visit=[[0]*N for _ in range(N)]
     gi,gj,distance=eatable.pop()
     sea[gi][gj]=0
-    q=deque([(si,sj,0)])
-    visit[si][sj]=1
-    while q:
-        ci,cj,cnt=q.popleft()
-        if ci==gi and cj==gj:
-            ans+=cnt
-            si,sj=ci,cj
-            growcnt+=1
-            if growcnt==size:
-                size+=1
-                growcnt=0
-            eatable = findeatable(si, sj)
-            break
-
-        for k in range(4):
-            ni,nj=ci+di[k],cj+dj[k]
-            if 0<=ni<N and 0<=nj<N and not visit[ni][nj] and sea[ni][nj]<=size:
-                q.append((ni,nj,cnt+1))
-                visit[ni][nj]=1
+    ans+=distance
+    growcnt+=1
+    if growcnt==size:
+        size+=1
+        growcnt=0
+    eatable=findeatable(gi,gj)
 
 print(ans)
