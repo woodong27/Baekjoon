@@ -9,8 +9,8 @@ for i in range(N):
 di = [-1,1,0,0]
 dj = [0,0,-1,1]
 cnt = 0
-for i in range(100):
-    for j in range(100):
+for i in range(101):
+    for j in range(101):
         if board[i][j]==1:
             for k in range(4):
                 ni,nj=i+di[k],j+dj[k]
